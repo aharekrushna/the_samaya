@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Stopwatch </title> 
+    <link rel="stylesheet" href="stop.css">
+   </head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="https://images.vexels.com/media/users/3/192569/isolated/preview/02263aff2eafbbee408f49ae4bac88d5-analog-stopwatch-timer-icon-stroke.png" height="60px" >
+            </div>
+            <a href="https://youtu.be/L6zulqXLPUw" class="enjoy" target="_blank">Symphony of Science</a>
+            <ul class="nav-menu">
+                   <li class="nav-item"><a href="countdown.html" class="nav-link">countdown</a></li>
+                   <li class="nav-item"><a href="stopwatch.html" class="nav-link">stopwatch</a></li>
+                   <li class="nav-item"><a href="index.html" class="nav-link">home</a></li>
+                   <li class="nav-item"><a href="https://youtu.be/L6zulqXLPUw" class="nav-link enjoy " target="_blank">Symphony of Science</a></li>
+                   
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav> 
+    </header>
+    <div class="wrapperr">
+		<span><img src="star.png" height="100px"></span>
+        <span><img src="star.png" height="80px"></span>
+        <span><img src="star.png" height="57px"></span>
+        <span><img src="star.png" height="90px"></span>
+        <span><img src="star.png" height="115px"></span>
+        <span><img src="star.png" height="100%"></span>
+        <span><img src="star.png" height="50%"></span>
+        <span><img src="star.png" height="59px"></span>
+        <span><img src="star.png" height="100%"></span>
+        <span><img src="star.png" height="40%"></span>
+        <span><img src="star.png" height="69%"></span>
+        <span><img src="star.png" height="68px"></span>
+        <span><img src="star.png" height="110%"></span>
+        <span><img src="star.png" height="70%"></span>
+        <span><img src="star.png" height="90px"></span>
+    </div>
+  <div class="wrapper">
+    <div class="time">
+      <span class="hour">00</span>
+      <span class="colon">:</span>
+      <span class="minute">00</span>
+      <span class="colon">:</span>
+      <span class="second">00</span>
+      <span class="colon ms-colon">:</span>
+      <span class="millisecond">00</span>
+    </div>
+
+    <div class="buttons">
+      <button class="start">Start</button>
+      <button class="stop">Stop</button>
+      <button class="reset">Reset</button>
+    </div>
+</div>
+  
+  <script>
+  let hr = min = sec = ms = "0" + 0,
+    startTimer;
+
+  const startBtn = document.querySelector(".start"),
+   stopBtn = document.querySelector(".stop"),
+   resetBtn = document.querySelector(".reset");
+
+   startBtn.addEventListener("click", start);
+   stopBtn.addEventListener("click", stop);
+   resetBtn.addEventListener("click", reset);
+
+  function start() {
+    startBtn.classList.add("active");
+    stopBtn.classList.remove("stopActive");
+
+    startTimer = setInterval(()=>{
+      ms++
+      ms = ms < 10 ? "0" + ms : ms;
+
+      if(ms == 100){
+        sec++;
+        sec = sec < 10 ? "0" + sec : sec;
+        ms = "0" + 0;
+      }
+      if(sec == 60){
+        min++;
+        min = min < 10 ? "0" + min : min;
+        sec = "0" + 0;
+      }
+      if(min == 60){
+        hr++;
+        hr = hr < 10 ? "0" + hr : hr;
+        min = "0" + 0;
+      }
+      putValue();
+    },10);
+
+  }
+
+  function stop() {
+    startBtn.classList.remove("active");
+    stopBtn.classList.add("stopActive");
+    clearInterval(startTimer);
+  }
+  function reset() {
+    startBtn.classList.remove("active");
+    stopBtn.classList.remove("stopActive");
+    clearInterval(startTimer);
+    hr = min = sec = ms = "0" + 0;
+    putValue();
+  }
+
+  function putValue() {
+    document.querySelector(".millisecond").innerText = ms;
+    document.querySelector(".second").innerText = sec;
+    document.querySelector(".minute").innerText = min;
+    document.querySelector(".hour").innerText = hr;
+  }
+ </script>
+</body>
+<script src="main.js"></script>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>countdown Timer</title>
+    <link rel="stylesheet" href="timer.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="https://images.vexels.com/media/users/3/192569/isolated/preview/02263aff2eafbbee408f49ae4bac88d5-analog-stopwatch-timer-icon-stroke.png" height="60px" >
+            </div>
+            <a href="https://youtu.be/L6zulqXLPUw" class="enjoy" target="_blank">Symphony of Science</a>
+            <ul class="nav-menu">
+                   <li class="nav-item"><a href="countdown.html" class="nav-link">countdown</a></li>
+                   <li class="nav-item"><a href="stopwatch.html" class="nav-link">stopwatch</a></li>
+                   <li class="nav-item"><a href="index.html" class="nav-link">home</a></li>
+                   <li class="nav-item"><a href="https://youtu.be/L6zulqXLPUw" class="nav-link enjoy " target="_blank">Symphony of Science</a></li>
+                   
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav> 
+    </header>
+    <div class="wrapper">
+		<span><img src="star.png" height="100px"></span>
+        <span><img src="star.png" height="80px"></span>
+        <span><img src="star.png" height="57px"></span>
+        <span><img src="star.png" height="90px"></span>
+        <span><img src="star.png" height="115px"></span>
+        <span><img src="star.png" height="100%"></span>
+        <span><img src="star.png" height="50%"></span>
+        <span><img src="star.png" height="59px"></span>
+        <span><img src="star.png" height="100%"></span>
+        <span><img src="star.png" height="40%"></span>
+        <span><img src="star.png" height="69%"></span>
+        <span><img src="star.png" height="68px"></span>
+        <span><img src="star.png" height="110%"></span>
+        <span><img src="star.png" height="70%"></span>
+        <span><img src="star.png" height="90px"></span>
+    </div>
+    
+
+    <div class="container">
+        <div class="clock">
+            <div class="box">
+            <div class="hour">
+                <input type="number" id="hour" placeholder="HOUR" autocomplete="off" value="">
+            </div>
+            </div>
+
+            <h2 class="dot">:</h2>
+
+            <div class="box">
+            <div class="minute">
+                <input type="number" id="minute" placeholder="MINUTES" autocomplete="off" value="">
+            </div>
+            </div>
+
+            <h2 class="dot">:</h2>
+
+            <div class="box">
+            <div class="second">
+                <input type="number" id="second" placeholder="SECONDS" autocomplete="off" value="">
+            </div>
+            </div>
+        </div>
+    
+        <div class="btn">
+            <button id="start">START</button>
+            <button id="stop">STOP</button>
+            <button id="reset">RESET</button>
+            <div class="stopsound">
+            <button id="stop-sound">STOP MUSIC</button>
+            </div>
+        </div>
+
+    </div>
+
+   
+     
+    <audio id="audio">
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+   <script> var start = document.getElementById('start');
+var stop = document.getElementById('stop');
+var reset = document.getElementById('reset');
+var stopsound = document.getElementById('stop-sound');
+
+var h = document.getElementById("hour");
+var m = document.getElementById("minute");
+var s = document.getElementById("second");
+
+var startTimer = null;
+var audio = document.getElementById("audio");
+
+stopsound.addEventListener('click',function(){
+    audio.pause();
+    audio.currentTime = 0;
+});
+
+start.addEventListener('click', function(){
+    if(startTimer === null && (h.value > 0 || m.value > 0 || s.value > 0)){
+        startTimer = setInterval(function() {
+            timer();
+        }, 1000);
+        h.disabled = true;
+        m.disabled = true;
+        s.disabled = true;
+    }
+});
+
+stop.addEventListener('click',function(){
+    clearInterval(startTimer);
+    startTimer = null;
+    h.disabled = true;
+    m.disabled = true;
+    s.disabled = true;
+});
+
+reset.addEventListener('click', function(){
+    h.value = 0;
+    m.value = 0;
+    s.value = 0;
+    stopInterval();
+    h.disabled = false;
+    m.disabled = false;
+    s.disabled = false;
+});
+
+function timer(){
+    if(h.value == 0 && m.value == 0 && s.value == 0){
+        h.value = 0;
+        m.value = 0;
+        s.value = 0;
+        stopInterval();
+        playAudio();
+    } else if(s.value != 0){
+        s.value--;
+    } else if(m.value != 0 && s.value == 0){
+        s.value = 59;
+        m.value--;
+    } else if(h.value != 0 && m.value == 0){
+        m.value = 60;
+        h.value--;
+    }
+}
+
+function stopInterval() {
+    clearInterval(startTimer);
+    startTimer = null;
+    h.disabled = false;
+    m.disabled = false;
+    s.disabled = false;
+}
+
+function playAudio(){
+        audio.play();
+}
+</script>
+</body>
+<script src="main.js"></script>
+</html>

@@ -1,0 +1,237 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open sans',sans-serif;
+
+}
+body{
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+    background-image: url(bimg.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.me{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.581);
+    margin-top: 15px;
+    border-radius: 10px;
+    backdrop-filter:blur(2px);
+    max-width: 650px;
+    padding: 25px;
+    color: #f46bbf;
+    margin:13rem auto auto auto  ;
+    height: 175px;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+}
+a:hover{
+    color: yellow;
+}
+header{
+    position: relative;
+    padding: 0 2rem;
+}
+.navbar{
+   
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.258);
+    margin-top: 15px;
+    border-radius: 10px;
+    backdrop-filter:blur(15px);
+    
+
+}
+/* .hamburger{
+    display: none;
+} */
+.enjoy{
+    background-color: rgba(255, 166, 0, 0.833);
+    padding: 10px;
+    border-radius: 5px;
+    
+}
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: rgb(247, 249, 251);
+    border-radius: 1px;
+
+}
+.nav-menu{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+.nav-item{
+    margin-left: 1rem;
+}
+.nav-menu{
+    position: fixed;
+    left: -110%;
+    top: 10rem;
+    
+    
+    background-color: rgba(0, 0, 0, 0.626);
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 10px 10px 20px rgb(173, 74, 109);
+}
+.nav-menu.active{
+    left: 0;
+}
+.nav-item{
+    margin: 3rem 0;
+    
+}
+.hamburger{
+    display: block;
+    cursor: pointer;
+}
+.hamburger.active .bar:nth-child(2){
+    opacity: 0;
+}
+.hamburger.active .bar:nth-child(1){
+  -webkit-transform: translateY(8px) rotate(45deg);
+  transform:translateY(8px) rotate(45deg) ;
+}
+.hamburger.active .bar:nth-child(3){
+    -webkit-transform: translateY(-8px) rotate(-45deg);
+    transform:translateY(-8px) rotate(-45deg) ;  
+}
+.wrapper span {
+	position: fixed;
+	bottom: -180px;
+	height: 50px;
+	width: 50px;
+	z-index: -1;
+	animation: animate 15s linear infinite;
+    
+}
+.wrapper span:nth-child(1) {
+	left: 5%;
+   
+	animation-delay: 0.3s;
+}
+.wrapper span:nth-child(2) {
+	left: 10%;
+	animation-delay: 3s;
+	
+}
+.wrapper span:nth-child(3) {
+	left: 20%;
+	animation-delay: 2s;
+}
+.wrapper span:nth-child(4) {
+	left: 30%;
+	animation-delay: 4s;
+	
+}
+.wrapper span:nth-child(5) {
+	left: 45%;
+	animation-delay: 6s;
+	
+}
+.wrapper span:nth-child(6) {
+	left: 40%;
+	animation-delay: 2.5s;
+	
+}
+.wrapper span:nth-child(7) {
+	left: 45%;
+	animation-delay: 5s;
+	
+}
+.wrapper span:nth-child(8) {
+	left: 50%;
+	animation-delay: 0s;
+	
+}
+.wrapper span:nth-child(9) {
+	left: 55%;
+	animation-delay: 3s;
+	
+}
+.wrapper span:nth-child(10) {
+	left: 60%;
+	animation-delay: 2.9s;
+	
+}
+.wrapper span:nth-child(11) {
+	left: 65%;
+	animation-delay: 3.2s;
+	
+}
+.wrapper span:nth-child(12) {
+	left: 70%;
+	animation-delay: 1.5s;
+	
+}
+.wrapper span:nth-child(13) {
+	left: 75%;
+	animation-delay: 2s;
+	
+}
+.wrapper span:nth-child(14) {
+	right: 10%;
+	animation-delay: 1.5s;
+	
+}
+.wrapper span:nth-child(15) {
+	right: 5%;
+	animation-delay: 1.9s;
+	
+}
+
+
+@keyframes animate {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	80% {
+		opacity: .5;
+       
+	}
+	40% {
+		transform: translateY(-800px) rotate(360deg);
+		opacity: 0;
+        
+	}
+}
+
+@media( max-width: 514px){
+   .me p{
+    overflow: scroll;
+   }
+   .nav-menu{
+    top: 8rem;
+    flex-direction: column;
+    height: 150px;
+    overflow:scroll;
+   }
+   .nav-item{
+    margin: 0.4rem;
+   }
+   
+}
